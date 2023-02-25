@@ -139,8 +139,8 @@ function getPasswordOptions() {
     alert("You have to pick something.");
     getPasswordLength();
   } */
-    alert("You must pick at least one character type");
-    return null; 
+    {alert("You must pick at least one character type");
+    return null; }
     // you must have at least one variable, see quinton's lecture yesterday's
   
 
