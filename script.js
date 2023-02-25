@@ -144,16 +144,67 @@ function getPasswordOptions() {
 // you must have at least one variable, see quinton's lecture yesterday's
   }
     
+// Object to store data
+
+var pswdOptions = {
+  Length: length,
+  hasNumbers: hasNumbers,
+  haslwrCaseLetters: haslwrCaseLetters,
+  hasuprCaseLetters: hasuprCaseLetters,
+  hasspecialCharacters: hasspecialCharacters,
+};
+return PasswordOptions;
+}
 
 
+/* from: https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript?page=2&tab=scoredesc#tab-top
 
 
+function randomString() {
+ var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+ var string_length = 8;
+ var randomstring = '';
+ for (var i=0; i<string_length; i++) {
+  var rnum = Math.floor(Math.random() * chars.length);
+  randomstring += chars.substring(rnum,rnum+1);
+ }
+ document.randform.randomfield.value = randomstring;
+}
+*/ 
+function randomString() {
+ var chars = if options = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+ var string_length = 8;
+ var randomstring = '';
+ for (var i=0; i<string_length; i++) {
+  var rnum = Math.floor(Math.random() * chars.length);
+  randomstring += chars.substring(rnum,rnum+1);
+ }
+ document.randform.randomfield.value = randomstring;
+}
+*/
+function  generatePassword() {
+  var options = getPasswordOptions();
 
-
-
+  var result = [];
 
 
   
+}
+
+
+/*for (var i = 0; i < zooAnimals.length; i++) { 
+    console.log("I am going to zoo to see " + zooAnimals[i] + ".");
+}
+*/
+for (var i = 0; i < )
+
+
+
+
+// take user's criteria, select random characters, concatenate selecetion, and scramble.
+// print results to the screen/console
+
+
 
 
   }
@@ -165,12 +216,12 @@ function getPasswordOptions() {
 
 
 
-
+/* used
 alert("You must choose at least one variable.");
 alert("Do you want special characters? !@#$%^&*()");
 alert("Do you want UPPER CASE letters?");
 alert("Do you want numbers?");
-
+*/
 
 
 
