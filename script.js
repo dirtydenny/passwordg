@@ -96,9 +96,9 @@ var uprCaseLetters = [
   "Z",
 ];
 
-var zerotonine = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var num = ['0','1','2','3','4','5','6','7','8','9'];
 
-function getPwdLength() {
+function getPasswordLength() {
   var length = parseInt(
     prompt("How many characters do you need in your password: 8-128?")
   );
@@ -107,53 +107,59 @@ function getPwdLength() {
     // other critriea
   } else {
     alert("Password lenght must be 8 - 128 characters");
-    getPwdLength();
+    getPasswordLength();
   }
 }
 
 function getPasswordOptions() {
   // get the pwd len
-  getPwdLength();
+  getPasswordLength();
 
-  var hasNumbers = window.confirm("Click Ok to include numbers.");
-  var haslwrCaseLetters = window.alert(
+  var hasNum = window.confirm(
+    "Click Ok to include numbers.");
+  var hasLwrCaseLetters = window.confirm(
     "Click ok to include lower case letters."
   );
-  var hasuprCaseLetters = window.alert("Click to include UPPER CASE letters.");
-  var hasspecialCharacters = window.alert(
+  var hasUprCaseLetters = window.confirm(
+    "Click to include UPPER CASE letters.");
+
+  var hasSpecialCharacters = window.confirm(
     "Click to include Special Characters."
   );
 
   if (
-    hasZerotonine === false &&
-    haslwrCaseLetters === false &&
-    hasuprCaseLetters === false &&
-    hasspecialCharacters === false
+    hasNum === false &&
+    hasLwrCaseLetters === false &&
+    hasUprCaseLetters === false &&
+    hasSpecialCharacters === false
   ) 
-     else {
+  /*{
+
+  } else {
     alert("You have to pick something.");
-    getPwdLength();
-  }
-  /*  alert("You must pick at least one character type");
-    return null; */
+    getPasswordLength();
+  } */
+    alert("You must pick at least one character type");
+    return null; 
     // you must have at least one variable, see quinton's lecture yesterday's
-  }
+  
 
   // Object to store data
 
-  var pswdOptions = {
+  var passwordOptions = {
     Length: length,
-    hasZerotonine: hasZerotonine,
-    haslwrCaseLetters: haslwrCaseLetters,
-    hasuprCaseLetters: hasuprCaseLetters,
-    hasspecialCharacters: hasspecialCharacters,
+    hasNum: hasNum,
+    hasLwrCaseLetters: hasLwrCaseLetters,
+    hasUprCaseLetters: hasUprCaseLetters,
+    hasSpecialCharacters: hasSpecialCharacters,
   };
-  return PasswordOptions;
+
+  return passwordOptions;
 }
 
 function getRandom(array) {
-  var randIndex = math.floor(Math.random() * array.length);
-  var randElement = arr[randIndex];
+  var randIndex = Math.floor(Math.random() * array.length);
+  var randElement = array[randIndex];
   
   return randElement;
 
@@ -172,19 +178,39 @@ function generatePassword() {
 
   var musthaveCharacters = [];
 
-  if (options.hasZerotonine) {
-    typesofCharacters = typesofCharacters.concat(zerotonine);
-    musthaveCharacters
+
+
+  // add numbers to the password
+ if (options.hasNum) {
+    typesofCharacters = typesofCharacters.concat(num);
+    musthaveCharacters.push(getRandom(num));
   }
-
-
+//add in the specail characters
+if (options.hasSpecialCharacters) {
+    typesofCharacters = typesofCharacters.concat(specialCharacters);
+    musthaveCharacters.push(getRandom(specialCharacters));
+  }
+//add on lower case characters
+if (options.hasLwrCaseLetters) {
+    typesofCharacters = typesofCharacters.concat(lwrCaseLetters);
+    musthaveCharacters.push(getRandom(lwrCaseLetters));
+  }
+//add upper case characters
+if (options.hasUprCaseLetters) {
+    typesofCharacters = typesofCharacters.concat(uprCaseLetters);
+    musthaveCharacters.push(getRandom(uprCaseLetters));
+  }
 
 for (var i = 0; i < options.length; i++) {
   var typesofCharacters =getRandom(typesofCharacters);
   result.push(typesofCharacters)
 }
 
+for (var i =0; i < musthaveCharacters.length; i++) {
+  result[i] = musthaveCharacters[i];
+}
 
+return result.join('');
 }
 
 var generateBtn = document.querySelector("#generate");
