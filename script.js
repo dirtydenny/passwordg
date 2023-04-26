@@ -98,28 +98,32 @@ var uprCaseLetters = [
 
 var num = ['0','1','2','3','4','5','6','7','8','9'];
 
-const getPasswordOptions= () => {
+const getPasswordOptions = () => {
 
  const length = parseInt(
-   prompt("How many characters do you need in your password: 8-128?"),
-   10
- );
-
- if (length < 8) {
-   alert("Password must be at least 8 characters.");
-   return null;
- }
-
- if (length > 128) {
-   alert("Password must be at least 128 characters.");
-   return null;
- }
-
-  var hasNum = confirm(
-    "Click Ok to include numbers.");
-  var hasLwrCaseLetters = confirm(
-    "Click ok to include lower case letters."
+    prompt("How many characters do you need in your password: 8-128?"),
+    10
   );
+    if (Number.isNaN(length)) {
+      alert("This response requires a number.");
+      return null;
+  }
+
+    if (length < 8) {
+    alert("Password must be at least 8 characters.");
+    return null;
+  }
+
+  if (length > 128) {
+    alert("Password must be at least 128 characters.");
+    return null;
+  }
+  
+    var hasNum = confirm(
+      "Click Ok to include numbers.");
+    var hasLwrCaseLetters = confirm(
+      "Click ok to include lower case letters."
+    );
   var hasUprCaseLetters = confirm(
     "Click to include UPPER CASE letters.");
 
