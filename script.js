@@ -115,21 +115,24 @@ const getPasswordOptions = () => {
   }
 
   if (length > 128) {
-    alert("Password must be at least 128 characters.");
+    alert("Password must be less than 128 characters.");
     return null;
   }
   
-    var hasNum = confirm(
-      "Click Ok to include numbers.");
-    var hasLwrCaseLetters = confirm(
+  var hasNum = confirm(
+      "Click Ok to include numbers."
+      );
+ 
+  var hasLwrCaseLetters = confirm(
       "Click ok to include lower case letters."
-    );
+      );
   var hasUprCaseLetters = confirm(
-    "Click to include UPPER CASE letters.");
+      "Click to include UPPER CASE letters."
+      );
 
   var hasSpecialCharacters = confirm(
     "Click to include Special Characters."
-  );
+      );
 
   if (
     hasNum === false &&
@@ -156,16 +159,16 @@ const getPasswordOptions = () => {
   return passwordOptions;
 }
 
-function getRandom(array) {
-  var randIndex = Math.floor(Math.random() * array.length);
-  var randElement = array[randIndex];
-  
+const getRandom = (arr) => {
+  const randIndex = Math.floor(Math.random() * arr.length);
+  const randElement = arr[randIndex];
+
   return randElement;
+};
 
-}
 
 
-const generatePassword = () => {
+function generatePassword() {
   
   console.log("generate password function");
   
@@ -174,12 +177,42 @@ const generatePassword = () => {
   var typesofCharacters = []; 
   var musthaveCharacters = [];
 
+if (!options) return null;
 
-
+//add in the specail characters
+if (options.hasSpecialCharacters) {
+    typesofCharacters = typesofCharacters.concat(specialCharacters);
+    musthaveCharacters.push(getRandom(specialCharacters));
+  }
   // add numbers to the password
- if (options.hasNum) {
+if (options.hasNum) {
     typesofCharacters = typesofCharacters.concat(num);
     musthaveCharacters.push(getRandom(num));
+  }
+//add in the specail characters
+if (options.hasSpecialCharacters) {
+    typesofCharacters = typesofCharacters.concat(specialCharacters);
+    musthaveCharacters.push(getRandom(specialCharacters));
+  }
+//add in the specail characters
+if (options.hasSpecialCharacters) {
+    typesofCharacters = typesofCharacters.concat(specialCharacters);
+    musthaveCharacters.push(getRandom(specialCharacters));
+  }
+//add in the specail characters
+if (options.hasSpecialCharacters) {
+    typesofCharacters = typesofCharacters.concat(specialCharacters);
+    musthaveCharacters.push(getRandom(specialCharacters));
+  }
+//add in the specail characters
+if (options.hasSpecialCharacters) {
+    typesofCharacters = typesofCharacters.concat(specialCharacters);
+    musthaveCharacters.push(getRandom(specialCharacters));
+  }
+//add in the specail characters
+if (options.hasSpecialCharacters) {
+    typesofCharacters = typesofCharacters.concat(specialCharacters);
+    musthaveCharacters.push(getRandom(specialCharacters));
   }
 //add in the specail characters
 if (options.hasSpecialCharacters) {
@@ -198,8 +231,8 @@ if (options.hasUprCaseLetters) {
   }
 
 for (var i = 0; i < options.length; i++) {
-  var typesofCharacters =getRandom(typesofCharacters);
-  result.push(typesofCharacters)
+  var typesofCharacter =getRandom(typesofCharacters);
+  result.push(typesofCharacter)
 }
 
 for (var i =0; i < musthaveCharacters.length; i++) {
